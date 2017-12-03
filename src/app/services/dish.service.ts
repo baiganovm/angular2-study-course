@@ -11,6 +11,10 @@ export class DishService {
   constructor() {
   }
 
+  getDishIds(): Observable<number[]> {
+    return Observable.of(DISHES.map(dish => dish.id));
+  }
+
   getDishes(): Observable<Dish[]> {
     return Observable.of(DISHES).delay(2000);
   }
