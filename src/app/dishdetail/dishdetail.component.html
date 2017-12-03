@@ -5,7 +5,10 @@
      fxLayoutAlign.gt-md="space-around center"
      fxLayoutGap="10px"
      fxLayoutGap.xs="0">
-
+  <div [hidden]="dish">
+    <md-spinner></md-spinner>
+    <h4>Loading . . . Please Wait</h4>
+  </div>
   <div fxFlex="40">
     <md-card *ngIf="dish">
       <md-card-header>
