@@ -102,6 +102,11 @@ export class DishdetailComponent implements OnInit {
   onSubmit() {
     this.commentPreview.date = new Date().toISOString();
     this.dish.comments.push(this.commentPreview);
-    this.createForm();
+    this.commentForm.reset({
+      author: '',
+      rating: 5,
+      comment: ''
+    });
+    this.commentPreview = null;
   }
 }

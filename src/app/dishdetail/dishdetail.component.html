@@ -44,15 +44,15 @@
           <p mdLine>-- {{item.author}} {{item.date | date}}</p>
         </div>
       </md-list-item>
-
-      <md-list-item class="md-3-line" layout="row" *ngIf="commentPreview && commentForm.valid">
+    </md-list>
+    <md-list *ngIf="commentPreview && commentForm.valid">
+      <md-list-item class="md-3-line" layout="row">
         <div class="md-list-item-text" layout="column">
           <p mdLine>{{commentPreview.comment}}</p>
           <p mdLine>{{commentPreview.rating}} Stars</p>
           <p mdLine>-- {{commentPreview.author}}</p>
         </div>
       </md-list-item>
-
     </md-list>
     <form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()">
       <p>
