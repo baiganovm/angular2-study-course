@@ -10,6 +10,7 @@ import {baseURL} from '../shared/baseurl';
 import {ProcessHTTPMsgService} from './process-httpmsg.service';
 
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 
 @Injectable()
@@ -21,22 +22,26 @@ export class DishService {
 
   getDishes(): Observable<Dish[]> {
     return this.http.get(baseURL + 'dishes')
-      .map(res => this.processHTTPMsgService.extractData(res));
+      .map(res => this.processHTTPMsgService.extractData(res))
+      .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
   getDish(id: number): Observable<Dish> {
     return this.http.get(baseURL + 'dishes/' + id)
-      .map(res => this.processHTTPMsgService.extractData(res));
+      .map(res => this.processHTTPMsgService.extractData(res))
+      .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
   getFeaturedDish(): Observable<Dish> {
     return this.http.get(baseURL + 'dishes?featured=true')
-      .map(res => this.processHTTPMsgService.extractData(res)[0]);
+      .map(res => this.processHTTPMsgService.extractData(res)[0])
+      .catch(error => this.processHTTPMsgService.handleError(error));
   }
 
   getDishIds(): Observable<number[]> {
     return this.getDishes()
-      .map(dishes => dishes.map(dish => dish.id));
+      .map(dishes => dishes.map(dish => dish.id))
+      .catch(error => Observable.of(error));
   }
 
 }
