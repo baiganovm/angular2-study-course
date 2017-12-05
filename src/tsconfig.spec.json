@@ -14,7 +14,7 @@
     "test.ts"
   ],
   "include": [
-    "**/*.spec.ts",
+    "**/menu.component.spec.ts",
     "**/*.d.ts"
   ]
 }
