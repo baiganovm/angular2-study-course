@@ -8,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  user = {remember: false};
+  user = {username: '', password: '', remember: false};
 
   constructor(public dialogRef: MdDialogRef<LoginComponent>) {
   }
